@@ -1,0 +1,143 @@
+---
+title: "upwaver"
+author: "Adrian Stämpfli and Michael Schmid, IMS-FHS"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{upwaver}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE, message=FALSE, results='hide'}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+# knitr::opts_chunk$set(results = 'hide')
+```
+
+<!-- Code for adding footnotes: footnotes^[This is a footnote.] -->
+
+upwaver is a wrapper around the UpWave API that allows users to access the UpWave API from 
+within R.  
+  
+While using UpWave (https://www.upwave.io/) you might come to a point where you want to 
+extract detailed information of ongoing projects or you might want to upload Cards to certain
+Boards directly out of a Excel sheet. Upwaver is a small tool to solve such problems without 
+copy-pasting a lot of content.  
+
+The package was designed based on the given UpWave API (https://upwavehq.github.io/api/).
+
+
+## Basics about UpWave and upwaver
+
+#### Your Domain
+Each organisation (company, team) with an UpWave account has its own `<TEAM_DOMAIN>`. 
+You can see this on the frontpage of your UpWave account: (`https://<TEAM_DOMAIN>.upwave.io`). 
+The upwaver package refers to this `<TEAM_DOMAIN>` as `organisation`.  
+  
+#### Authentication
+To access information of your account (domain), you need an access token. It can be obtained 
+by visiting your account settings. Click your profile image, select “Settings” and find your 
+API-Key in the “Account” tab. The upwaver package refers to the API-Key as `token`. 
+  
+#### Boards
+An UpWave account consits of different Boards (projects) on which an organisation works
+simultaneously. The upwaver package identifies a Board with the `board_id` and `board_name`. 
+
+ * `board_name`: it's the casual name (title) you give to a Board 
+ * `board_id`: That's the unique ID you see in the browser-link when watching your Board (i.e: 
+    `https://<TEAM_DOMAIN>.upwave.io/board/board_id/view/...`)
+
+#### Cards
+Each Board consits of different Cards which can be seen as lots of "work packages". The contain
+Information about the actual tasts to do inside the project. They are the objects to talk 
+to when using upwaver. 
+
+
+## Getting Board- & Card- information from UpWave
+The upwaver package gives three basic functionalities to directly access UpWave information. 
+
+ * [List of Boards](#list_of_boards) 
+ * [Board details](#board_details)
+ * [List of Cards](#list_of_cards)
+
+
+#### List of Boards {#list_of_boards}
+Use `list_boards()` to get a list of all boards of your organisation. Archived boards will
+not be shown in this list.
+```{r}
+my_board_list <- upwaver::list_boards("ims-fhs", "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_board_list$count
+summary(my_board_list)
+summary(my_board_list$results[[1]])
+```
+
+
+#### Board details {#board_details}
+Use `board_details()` to get detailed background Information about a specific board. 
+```{r}
+my_board_details <- upwaver::board_details("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+summary(my_board_details)
+```
+
+
+#### List of Cards {#list_of_cards}
+Use `list_cards()` to get detailed Information about all Cards of a specific board. This 
+includes cards that are marked as completed. 
+```{r}
+my_card_list <- upwaver::list_cards("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_card_list$count
+summary(my_card_list)
+summary(my_card_list$results[[1]])
+```
+
+
+## Getting Storypoints-Information from UpWave
+An additional feature of upwaver is the `storypoints_and_status()` function. It's was designed by our 
+institue for internal reasons. Nevertheless it might be useful for your organisation as well.  
+  
+If working with agile methods (i.e. SCRUM, agile testing, ASD, ...) you might want to work with
+storypoints in order to estimate time resources. Our institute works with storypoints in the 
+following way. Each UpWave Card has a short text at the bottom the Card description that says:  
+**"Aufwand: X SP"** or **"Aufwand: X AT"** as an indicator for the estimated storypoints. 
+The value `X`, title and status of every Card is be caught by `storypoints_and_status()` and
+given as a list. 
+```{r}
+my_storypoints <- upwaver::storypoints_and_status("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_storypoints$storypoints_status
+my_storypoints$sum_storypoints
+```
+
+
+## Create a Userstory (Card) on UpWave
+For own puposes we created a function that directly uploads Userstorys to the leftmost column of
+a desired Board from a local excel file. This might me helfpul when a list of basic tasks has
+been defined in an exel-sheet during a meeting or similar and you don't want to copy paste it 
+all into UpWave. 
+
+The function needs several input parameters to coordinate the source (excel file) with the 
+desired UpWave Board. Keep in mind that the excel file needs the following three columns: 
+
+  * `US-ID`: The Number you want to give to your Card (Userstory)
+  * `name`: The name (title) of your Userstory
+  * `description`: The description of your Userstory
+  
+```{r}
+# create_card_from_excel(
+#   excel_file = "path_to_your_excel_file", 
+#   sheet = "name_of_the_excel_sheet" or number_of_the_excel_sheet, 
+#   line_number = line_nr_you_want_to_upload, 
+#   organisation = "your_organisation", 
+#   board_id = your_board_id, 
+#   board_name = "your_board_name", 
+#   token = "your_token")
+```
+
+To upload several Cards, we recomment a simple for-loop
+```{r}
+# for (i in 1:30) {
+#   create_card_from_excel(..., line_number = i, ...)
+# }
+```
+
+
