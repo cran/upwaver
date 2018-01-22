@@ -2,7 +2,7 @@
 % Please edit documentation in R/upwaver.R
 \name{request}
 \alias{request}
-\title{Create a correct request for the UpWave API}
+\title{Create a correct request for the 'Upwave' API}
 \usage{
 request(url, token)
 }

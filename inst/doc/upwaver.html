@@ -12,7 +12,7 @@
 
 <meta name="author" content="Adrian Stämpfli and Michael Schmid, IMS-FHS" />
 
-<meta name="date" content="2018-01-16" />
+<meta name="date" content="2018-01-22" />
 
 <title>upwaver</title>
 
@@ -280,27 +280,27 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">upwaver</h1>
 <h4 class="author"><em>Adrian Stämpfli and Michael Schmid, IMS-FHS</em></h4>
-<h4 class="date"><em>2018-01-16</em></h4>
+<h4 class="date"><em>2018-01-22</em></h4>
 
 
 
 <!-- Code for adding footnotes: footnotes^[This is a footnote.] -->
-<p>upwaver is a wrapper around the UpWave API that allows users to access the UpWave API from within R.</p>
-<p>While using UpWave (<a href="https://www.upwave.io/" class="uri">https://www.upwave.io/</a>) you might come to a point where you want to extract detailed information of ongoing projects or you might want to upload Cards to certain Boards directly out of a Excel sheet. Upwaver is a small tool to solve such problems without copy-pasting a lot of content.</p>
-<p>The package was designed based on the given UpWave API (<a href="https://upwavehq.github.io/api/" class="uri">https://upwavehq.github.io/api/</a>).</p>
+<p>‘upwaver’ is a wrapper around the ‘Upwave’ API that allows users to access the ‘Upwave’ API from within R.</p>
+<p>While using ‘Upwave’ (<a href="https://www.upwave.io/" class="uri">https://www.upwave.io/</a>) you might come to a point where you want to extract detailed information of ongoing projects or you might want to upload Cards to certain Boards directly out of a Excel sheet. ‘upwaver’ is a small tool to solve such problems without copy-pasting a lot of content.</p>
+<p>The package was designed based on the given ‘Upwave’ API (<a href="https://upwavehq.github.io/api/" class="uri">https://upwavehq.github.io/api/</a>).</p>
 <section id="basics-about-upwave-and-upwaver" class="level2">
-<h2>Basics about UpWave and upwaver</h2>
+<h2>Basics about ‘Upwave’ and ‘upwaver’</h2>
 <section id="your-domain" class="level4">
 <h4>Your Domain</h4>
-<p>Each organisation (company, team) with an UpWave account has its own <code>&lt;TEAM_DOMAIN&gt;</code>. You can see this on the frontpage of your UpWave account: (<code>https://&lt;TEAM_DOMAIN&gt;.upwave.io</code>). The upwaver package refers to this <code>&lt;TEAM_DOMAIN&gt;</code> as <code>organisation</code>.</p>
+<p>Each organisation (company, team) with an ‘Upwave’ account has its own <code>&lt;TEAM_DOMAIN&gt;</code>. You can see this on the frontpage of your ‘Upwave’ account: (<code>https://&lt;TEAM_DOMAIN&gt;.upwave.io</code>). The ‘upwaver’ package refers to this <code>&lt;TEAM_DOMAIN&gt;</code> as <code>organisation</code>.</p>
 </section>
 <section id="authentication" class="level4">
 <h4>Authentication</h4>
-<p>To access information of your account (domain), you need an access token. It can be obtained by visiting your account settings. Click your profile image, select “Settings” and find your API-Key in the “Account” tab. The upwaver package refers to the API-Key as <code>token</code>.</p>
+<p>To access information of your account (domain), you need an access token. It can be obtained by visiting your account settings. Click your profile image, select “Settings” and find your API-Key in the “Account” tab. The ‘upwaver’ package refers to the API-Key as <code>token</code>.</p>
 </section>
 <section id="boards" class="level4">
 <h4>Boards</h4>
-<p>An UpWave account consits of different Boards (projects) on which an organisation works simultaneously. The upwaver package identifies a Board with the <code>board_id</code> and <code>board_name</code>.</p>
+<p>An ‘Upwave’ account consits of different Boards (projects) on which an organisation works simultaneously. The ‘upwaver’ package identifies a Board with the <code>board_id</code> and <code>board_name</code>.</p>
 <ul>
 <li><code>board_name</code>: it’s the casual name (title) you give to a Board</li>
 <li><code>board_id</code>: That’s the unique ID you see in the browser-link when watching your Board (i.e: <code>https://&lt;TEAM_DOMAIN&gt;.upwave.io/board/board_id/view/...</code>)</li>
@@ -308,12 +308,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </section>
 <section id="cards" class="level4">
 <h4>Cards</h4>
-<p>Each Board consits of different Cards which can be seen as lots of “work packages”. The contain Information about the actual tasts to do inside the project. They are the objects to talk to when using upwaver.</p>
+<p>Each Board consits of different Cards which can be seen as lots of “work packages”. The contain Information about the actual tasts to do inside the project. They are the objects to talk to when using ‘upwaver’</p>
 </section>
 </section>
 <section id="getting-board--card--information-from-upwave" class="level2">
-<h2>Getting Board- &amp; Card- information from UpWave</h2>
-<p>The upwaver package gives three basic functionalities to directly access UpWave information.</p>
+<h2>Getting Board- &amp; Card- information from ‘Upwave’</h2>
+<p>The ‘upwaver’ package gives three basic functionalities to directly access ‘Upwave’ information.</p>
 <ul>
 <li><a href="#list_of_boards">List of Boards</a></li>
 <li><a href="#board_details">Board details</a></li>
@@ -322,31 +322,33 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <section id="list_of_boards" class="level4">
 <h4>List of Boards</h4>
 <p>Use <code>list_boards()</code> to get a list of all boards of your organisation. Archived boards will not be shown in this list.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">my_board_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_boards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="st">&quot;cb52b691defef3e689b47e4caa9fa24e0db6858b&quot;</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">my_board_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_boards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">my_board_list<span class="op">$</span>count</a></code></pre></div>
-<pre><code>## [1] 21</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">summary</span>(my_board_list)</a></code></pre></div>
 <pre><code>##          Length Class  Mode   
-## count     1     -none- numeric
-## next      0     -none- NULL   
-## previous  0     -none- NULL   
-## results  21     -none- list</code></pre>
+## count    1      -none- numeric
+## next     0      -none- NULL   
+## previous 0      -none- NULL   
+## results  1      -none- list</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">summary</span>(my_board_list<span class="op">$</span>results[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>##                 Length Class  Mode     
 ## id              1      -none- numeric  
 ## title           1      -none- character
-## team            3      -none- list     
+## access          3      -none- list     
+## team            4      -none- list     
 ## created_dt      1      -none- character
 ## created_by_user 5      -none- list</code></pre>
 </section>
 <section id="board_details" class="level4">
 <h4>Board details</h4>
 <p>Use <code>board_details()</code> to get detailed background Information about a specific board.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">my_board_details &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">board_details</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14310</span>, <span class="st">&quot;cb52b691defef3e689b47e4caa9fa24e0db6858b&quot;</span>)</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">my_board_details &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">board_details</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">summary</span>(my_board_details)</a></code></pre></div>
 <pre><code>##                            Length Class  Mode     
 ## id                         1      -none- numeric  
 ## title                      1      -none- character
+## access                     3      -none- list     
 ## purpose                    1      -none- character
 ## background_image_url       1      -none- character
 ## background_image_thumb_url 0      -none- NULL     
@@ -359,7 +361,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <section id="list_of_cards" class="level4">
 <h4>List of Cards</h4>
 <p>Use <code>list_cards()</code> to get detailed Information about all Cards of a specific board. This includes cards that are marked as completed.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">my_card_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_cards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14310</span>, <span class="st">&quot;cb52b691defef3e689b47e4caa9fa24e0db6858b&quot;</span>)</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">my_card_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_cards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">my_card_list<span class="op">$</span>count</a></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">summary</span>(my_card_list)</a></code></pre></div>
@@ -371,15 +373,16 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">summary</span>(my_card_list<span class="op">$</span>results[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>##                  Length Class  Mode     
 ## id               1      -none- numeric  
-## board            2      -none- list     
 ## title            1      -none- character
+## access           3      -none- list     
+## board            2      -none- list     
 ## description      1      -none- character
 ## cover_image_url  1      -none- character
 ## color            3      -none- list     
 ## state            1      -none- numeric  
 ## due_dt           0      -none- NULL     
 ## created_dt       1      -none- character
-## created_by_user  5      -none- list     
+## created_by_user  0      -none- NULL     
 ## finished_dt      0      -none- NULL     
 ## finished_by_user 0      -none- NULL     
 ## assigned         0      -none- list     
@@ -390,40 +393,40 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </section>
 </section>
 <section id="getting-storypoints-information-from-upwave" class="level2">
-<h2>Getting Storypoints-Information from UpWave</h2>
+<h2>Getting Storypoints-Information from ‘Upwave’</h2>
 <p>An additional feature of upwaver is the <code>storypoints_and_status()</code> function. It’s was designed by our institue for internal reasons. Nevertheless it might be useful for your organisation as well.</p>
-<p>If working with agile methods (i.e. SCRUM, agile testing, ASD, …) you might want to work with storypoints in order to estimate time resources. Our institute works with storypoints in the following way. Each UpWave Card has a short text at the bottom the Card description that says:<br />
+<p>If working with agile methods (i.e. SCRUM, agile testing, ASD, …) you might want to work with storypoints in order to estimate time resources. Our institute works with storypoints in the following way. Each ‘Upwave’ Card has a short text at the bottom the Card description that says:<br />
 <strong>“Aufwand: X SP”</strong> or <strong>“Aufwand: X AT”</strong> as an indicator for the estimated storypoints. The value <code>X</code>, title and status of every Card is be caught by <code>storypoints_and_status()</code> and given as a list.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">my_storypoints &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">storypoints_and_status</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14310</span>, <span class="st">&quot;cb52b691defef3e689b47e4caa9fa24e0db6858b&quot;</span>)</a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">my_storypoints &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">storypoints_and_status</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">my_storypoints<span class="op">$</span>storypoints_status</a></code></pre></div>
 <pre><code>##                                               title status storypoints
-## 1             US22 - Bestehende Touren modifizieren      0           0
-## 2                          US21 - Touren planen (5)      0           0
-## 3                    US20 - Zielfunktion definieren      0           0
-## 4                          US19 - Touren planen (4)      0           0
-## 5      US18 - Entwicklung einer Zeit-/Distanzmatrix      0          10
-## 6          US17 - Milestone Workshop zur Diskussion      0          10
-## 7                          US16 - Touren planen (3)      2           0
+## 1             US22 - Bestehende Touren modifizieren      1           5
+## 2                    US21 - Touren planen (5)&quot;Good&quot;      1           1
+## 3                    US20 - Zielfunktion definieren      1           3
+## 4              US19 - Touren planen (4)&quot;Feasable 2&quot;      1           2
+## 5      US18 - Entwicklung einer Zeit-/Distanzmatrix      1           1
+## 6          US17 - Milestone Workshop zur Diskussion      1           5
+## 7                US16 - Touren planen (3)&quot;Feasable&quot;      2           0
 ## 8            US15 - Optimierungs-Job entgegennehmen      3   Completed
 ## 9                  US14 - Stammdaten entgegennehmen      3   Completed
 ## 10 US13 - Daten des Optimierungs-Jobs bereitstellen      3   Completed
-## 11                  US12 - Stammdaten bereitstellen      0          10
-## 12                         US10 - Touren planen (2)      2           0
-## 13        US9 - Zulässigkeit des Tourenplans prüfen      2           0
-## 14            US8 - Verfügbare Ressourcen bestimmen      2          10
+## 11                  US12 - Stammdaten bereitstellen      1           8
+## 12               US10 - Touren planen (2)&quot;Feasable&quot;      2           3
+## 13        US9 - Zulässigkeit des Tourenplans prüfen      2           2
+## 14            US8 - Verfügbare Ressourcen bestimmen      2           8
 ## 15        US7 - Bereitstellung der Testdaten Camion      3   Completed
 ## 16                          US6 - Touren planen (1)      3   Completed
 ## 17 US4 - einfache, syntethische Testfälle erstellen      3   Completed
 ## 18             US3 - Definition der Rückgabeobjekte      3   Completed
-## 19                 US2 - IMS-Datenmodell validieren      2           0
+## 19                 US2 - IMS-Datenmodell validieren      2           8
 ## 20                  US1 - IMS-Datenmodell erstellen      3   Completed</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">my_storypoints<span class="op">$</span>sum_storypoints</a></code></pre></div>
-<pre><code>## [1] 40</code></pre>
+<pre><code>## [1] 46</code></pre>
 </section>
 <section id="create-a-userstory-card-on-upwave" class="level2">
-<h2>Create a Userstory (Card) on UpWave</h2>
-<p>For own puposes we created a function that directly uploads Userstorys to the leftmost column of a desired Board from a local excel file. This might me helfpul when a list of basic tasks has been defined in an exel-sheet during a meeting or similar and you don’t want to copy paste it all into UpWave.</p>
-<p>The function needs several input parameters to coordinate the source (excel file) with the desired UpWave Board. Keep in mind that the excel file needs the following three columns:</p>
+<h2>Create a Userstory (Card) on ‘Upwave’</h2>
+<p>For own puposes we created a function that directly uploads Userstorys to the leftmost column of a desired Board from a local excel file. This might me helfpul when a list of basic tasks has been defined in an exel-sheet during a meeting or similar and you don’t want to copy paste it all into ‘Upwave’</p>
+<p>The function needs several input parameters to coordinate the source (excel file) with the desired ‘Upwave’ Board. Keep in mind that the excel file needs the following three columns:</p>
 <ul>
 <li><code>US-ID</code>: The Number you want to give to your Card (Userstory)</li>
 <li><code>name</code>: The name (title) of your Userstory</li>

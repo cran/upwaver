@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_card.R
 \name{create_card_from_excel}
 \alias{create_card_from_excel}
-\title{Create a new card on a specified UpWave board}
+\title{Create a new card on a specified 'Upwave' board}
 \usage{
 create_card_from_excel(excel_file, sheet, line_number, organisation, board_id,
   board_name, token)
@@ -14,7 +14,7 @@ expected columns: US-ID, name, description}
 \item{sheet}{An integer or a character. The sheet of the excel-file providing informations for user-stories;
 expected columns: US-ID, name, description}
 
-\item{line_number}{An integer. The line number in the spreadsheet starting from 0 --> SLC: Why not 1?!}
+\item{line_number}{An integer. The line number in the spreadsheet starting from 1}
 
 \item{organisation}{A character. The name of the organisation as specified in the URL:
 https://<organisation>.upwave.io}

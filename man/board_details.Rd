@@ -21,7 +21,7 @@ and find your API-Key in the "Account" tab.}
 A list
 }
 \description{
-board_details() is a wrapper around "board_details" as specified in the upwave API
+board_details() is a wrapper around "board_details" as specified in the 'Upwave' API
 https://www.upwave.io/api/. It returns detailed information about a specific board such
 as id, title, purpose, background image, creation time, creator, columns, rows and colors.
 }

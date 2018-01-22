@@ -21,7 +21,7 @@ and find your API-Key in the "Account" tab.}
 A list
 }
 \description{
-list_cards() is wrapper around "List Cards" as specified in the upwave API
+list_cards() is wrapper around "List Cards" as specified in the 'Upwave' API
 https://www.upwave.io/api/. It returns detailed Information about each card of a specific
 board as card id, title, board id, description, due_dt, state, color, assigned, ...
 }

@@ -23,10 +23,10 @@ the numeric sum_storypoints.
 }
 \description{
 Calculates storypoints (of active Cards, which are Cards that haven't been completed
-yet) and status in the backlog of an upwave board.
+yet) and status in the backlog of an 'Upwave' board.
 Storypoints have to be specified in the description (directly beneath the title) of
 each card with a string of the form: "Aufwand: X SP" or "Aufwand: X AT". This is not
-part of the upwave API but an additional functionality.
+part of the 'Upwave' API but an additional functionality.
 }
 \examples{
 upwaver::storypoints_and_status("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")

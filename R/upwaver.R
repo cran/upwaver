@@ -1,6 +1,6 @@
 #' Information about your organisation's boards
 #'
-#' list_boards() is a wrapper around "List Boards" as specified in the upwave API
+#' list_boards() is a wrapper around "List Boards" as specified in the 'Upwave' API
 #' https://www.upwave.io/api/. It returns information for your organisation's
 #' boards as id's, title's, time of creation and the users who created the boards.
 #'
@@ -22,7 +22,7 @@ list_boards <- function(organisation, token) {
 
 #' Information about a specific board
 #'
-#' board_details() is a wrapper around "board_details" as specified in the upwave API
+#' board_details() is a wrapper around "board_details" as specified in the 'Upwave' API
 #' https://www.upwave.io/api/. It returns detailed information about a specific board such
 #' as id, title, purpose, background image, creation time, creator, columns, rows and colors.
 #'
@@ -46,7 +46,7 @@ board_details <- function(organisation, board_id, token) {
 
 #' Information about the cards on a board
 #'
-#' list_cards() is wrapper around "List Cards" as specified in the upwave API
+#' list_cards() is wrapper around "List Cards" as specified in the 'Upwave' API
 #' https://www.upwave.io/api/. It returns detailed Information about each card of a specific
 #' board as card id, title, board id, description, due_dt, state, color, assigned, ...
 #'
@@ -68,7 +68,7 @@ list_cards <- function(organisation, board_id, token) {
 }
 
 
-#' Create a correct request for the UpWave API
+#' Create a correct request for the 'Upwave' API
 #'
 #' request() is an internal function that invokes a GET request with a token according to
 #' https://www.upwave.io/api/
@@ -81,7 +81,7 @@ request <- function(url, token) {
   return(httr::GET(url, httr::add_headers(Authorization = paste0("Token ", token))))
 }
 
-#' Transform the answer of a UpWave API request to a list
+#' Transform the answer of a 'Upwave' API request to a list
 #'
 #' content_as_list() is an internal function that extracts content from a request and
 #' coerces it to a list format

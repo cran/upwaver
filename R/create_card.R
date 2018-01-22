@@ -1,4 +1,4 @@
-#' Create a new card on a specified UpWave board
+#' Create a new card on a specified 'Upwave' board
 #'
 #' create_card_from_excel() adds a new card in the most-left column of the given board.
 #' The Information of the card are taken from an excel file.
@@ -7,7 +7,7 @@
 #' expected columns: US-ID, name, description
 #' @param sheet An integer or a character. The sheet of the excel-file providing informations for user-stories;
 #' expected columns: US-ID, name, description
-#' @param line_number An integer. The line number in the spreadsheet starting from 0 --> SLC: Why not 1?!
+#' @param line_number An integer. The line number in the spreadsheet starting from 1
 #' @param organisation A character. The name of the organisation as specified in the URL:
 #' https://<organisation>.upwave.io
 #' @param board_id An integer. The board number, the card has to be created in

@@ -2,7 +2,7 @@
 % Please edit documentation in R/upwaver.R
 \name{content_as_list}
 \alias{content_as_list}
-\title{Transform the answer of a UpWave API request to a list}
+\title{Transform the answer of a 'Upwave' API request to a list}
 \usage{
 content_as_list(response)
 }

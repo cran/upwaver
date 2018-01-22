@@ -7,7 +7,7 @@
 aufwand(description)
 }
 \arguments{
-\item{description}{A string extracted from an UpWave card}
+\item{description}{A string extracted from an 'Upwave' card}
 }
 \value{
 An integer

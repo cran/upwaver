@@ -18,7 +18,7 @@ and find your API-Key in the "Account" tab.}
 A list
 }
 \description{
-list_boards() is a wrapper around "List Boards" as specified in the upwave API
+list_boards() is a wrapper around "List Boards" as specified in the 'Upwave' API
 https://www.upwave.io/api/. It returns information for your organisation's
 boards as id's, title's, time of creation and the users who created the boards.
 }

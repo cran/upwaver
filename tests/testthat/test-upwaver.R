@@ -44,7 +44,7 @@ test_that("board_details() works", {
   board_details <- board_details("ims-fhs", id,
                                     "a44fa67c5df2acc9836058ffca870d7b78b017cb")
   expect_that(board_details, is_a("list"))
-  expect_that(length(board_details), equals(10))
+  expect_that(length(board_details), equals(11))
   expect_that(board_details$id, equals(id))
 
 })

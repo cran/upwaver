@@ -1,10 +1,10 @@
 #' Calculate storypoints ans status of the Cards of a specific Board
 #'
 #' Calculates storypoints (of active Cards, which are Cards that haven't been completed
-#' yet) and status in the backlog of an upwave board.
+#' yet) and status in the backlog of an 'Upwave' board.
 #' Storypoints have to be specified in the description (directly beneath the title) of
 #' each card with a string of the form: "Aufwand: X SP" or "Aufwand: X AT". This is not
-#' part of the upwave API but an additional functionality.
+#' part of the 'Upwave' API but an additional functionality.
 #'
 #' @param organisation A character. The name of the organisation as specified in the URL:
 #' https://<organisation>.upwave.io
@@ -47,7 +47,7 @@ storypoints_and_status <- function(organisation, board_id, token) {
 #' aufwand() parses the description of a card for tags like "Aufwand: 10 AT" or
 #' "Aufwand: 10 SP".
 #'
-#' @param description A string extracted from an UpWave card
+#' @param description A string extracted from an 'Upwave' card
 #'
 #' @return An integer
 aufwand <- function(description) {

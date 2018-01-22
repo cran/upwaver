@@ -4,23 +4,23 @@ knitr::opts_chunk$set(message = FALSE)
 # knitr::opts_chunk$set(results = 'hide')
 
 ## ------------------------------------------------------------------------
-my_board_list <- upwaver::list_boards("ims-fhs", "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_board_list <- upwaver::list_boards("ims-fhs", "a44fa67c5df2acc9836058ffca870d7b78b017cb")
 my_board_list$count
 summary(my_board_list)
 summary(my_board_list$results[[1]])
 
 ## ------------------------------------------------------------------------
-my_board_details <- upwaver::board_details("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_board_details <- upwaver::board_details("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
 summary(my_board_details)
 
 ## ------------------------------------------------------------------------
-my_card_list <- upwaver::list_cards("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_card_list <- upwaver::list_cards("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
 my_card_list$count
 summary(my_card_list)
 summary(my_card_list$results[[1]])
 
 ## ------------------------------------------------------------------------
-my_storypoints <- upwaver::storypoints_and_status("ims-fhs", 14310, "cb52b691defef3e689b47e4caa9fa24e0db6858b")
+my_storypoints <- upwaver::storypoints_and_status("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
 my_storypoints$storypoints_status
 my_storypoints$sum_storypoints
 
