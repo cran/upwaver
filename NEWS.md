@@ -1,3 +1,9 @@
+# upwaver 1.1.0
+
+* New function storypoints_and_status_released(): storypoints for all cards with status 'released'.
+* Bugfix: Catch cases where there are more than 100 cards on a board since storypoint calculation might be wrong in those cases.
+* Change one testcase to reflect 'Upwave' API-Changes.
+
 # upwaver 1.0.1
 
 * Change of API-Token in vignette.
