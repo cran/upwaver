@@ -23,5 +23,5 @@ https://www.upwave.io/api/. It returns information for your organisation's
 boards as id's, title's, time of creation and the users who created the boards.
 }
 \examples{
-list_boards("ims-fhs", "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+list_boards("4597", "807a0c3451c04602b4dbfdc0338a65f7")
 }

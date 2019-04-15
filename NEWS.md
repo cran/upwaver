@@ -1,3 +1,7 @@
+# upwaver 1.2.0
+
+* Minor changes to reflect new 'Upwave' API endpoint. The API of the package did not change.
+
 # upwaver 1.1.0
 
 * New function storypoints_and_status_released(): storypoints for all cards with status 'released'.

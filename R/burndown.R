@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples upwaver::storypoints_and_status_released(
-#' "ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+#' "4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 storypoints_and_status_released <- function(organisation, board_id, token) {
   cards <- upwaver::list_cards(organisation, board_id, token)$results
   if (length(cards) >= 100) {stop("More than 100 cards on board, calculation of storypoints may be wrong.")}
@@ -60,10 +60,12 @@ storypoints_and_status_released <- function(organisation, board_id, token) {
 #' the numeric sum_storypoints.
 #' @export
 #'
-#' @examples upwaver::storypoints_and_status("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+#' @examples
+#' upwaver::storypoints_and_status("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 storypoints_and_status <- function(organisation, board_id, token) {
   cards <- upwaver::list_cards(organisation, board_id, token)$results
-
+  cards <- lapply(cards, function(x){x$description <- gsub("<.*?>", "", x$description); x})
+  cards <- lapply(cards, function(x){x$description <- gsub("\\&\\#\\d{5};", "", x$description); x})
   if (length(cards) >= 100) {stop("More than 100 cards on board, calculation of storypoints may be wrong.")}
 
   df <- data.frame(title = character(length(cards)),

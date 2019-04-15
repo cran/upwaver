@@ -26,5 +26,5 @@ https://www.upwave.io/api/. It returns detailed information about a specific boa
 as id, title, purpose, background image, creation time, creator, columns, rows and colors.
 }
 \examples{
-board_details("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+board_details("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 }

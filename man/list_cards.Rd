@@ -26,5 +26,5 @@ https://www.upwave.io/api/. It returns detailed Information about each card of a
 board as card id, title, board id, description, due_dt, state, color, assigned, ...
 }
 \examples{
-list_cards("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+list_cards("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 }

@@ -13,9 +13,10 @@
 #' @return A list
 #' @export
 #'
-#' @examples list_boards("ims-fhs", "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+#' @examples
+#' list_boards("4597", "807a0c3451c04602b4dbfdc0338a65f7")
 list_boards <- function(organisation, token) {
-  url <- paste0("https://", organisation, ".upwave.io/api/boards/")
+  url <- paste0("https://api.upwave.io/workspaces/", organisation, "/boards/")
   return(content_as_list(request(url, token)))
 }
 
@@ -37,9 +38,10 @@ list_boards <- function(organisation, token) {
 #' @return A list
 #' @export
 #'
-#' @examples board_details("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+#' @examples
+#' board_details("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 board_details <- function(organisation, board_id, token) {
-  url <- paste0("https://", organisation, ".upwave.io/api/boards/", board_id, "/")
+  url <- paste0("https://api.upwave.io/workspaces/", organisation, "/boards/", board_id, "/")
   return(content_as_list(request(url, token)))
 }
 
@@ -61,9 +63,10 @@ board_details <- function(organisation, board_id, token) {
 #' @return A list
 #' @export
 #'
-#' @examples list_cards("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+#' @examples
+#' list_cards("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 list_cards <- function(organisation, board_id, token) {
-  url <- paste0("https://", organisation, ".upwave.io/api/cards/?board=", board_id)
+  url <- paste0("https://api.upwave.io/workspaces/", organisation, "/cards/?board=", board_id)
   return(content_as_list(request(url, token)))
 }
 

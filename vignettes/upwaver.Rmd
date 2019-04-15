@@ -66,7 +66,7 @@ The 'upwaver' package gives three basic functionalities to directly access 'Upwa
 Use `list_boards()` to get a list of all boards of your organisation. Archived boards will
 not be shown in this list.
 ```{r}
-my_board_list <- upwaver::list_boards("ims-fhs", "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+my_board_list <- upwaver::list_boards("4597", "807a0c3451c04602b4dbfdc0338a65f7")
 my_board_list$count
 summary(my_board_list)
 summary(my_board_list$results[[1]])
@@ -76,7 +76,7 @@ summary(my_board_list$results[[1]])
 #### Board details {#board_details}
 Use `board_details()` to get detailed background Information about a specific board. 
 ```{r}
-my_board_details <- upwaver::board_details("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+my_board_details <- upwaver::board_details("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 summary(my_board_details)
 ```
 
@@ -85,7 +85,7 @@ summary(my_board_details)
 Use `list_cards()` to get detailed Information about all Cards of a specific board. This 
 includes cards that are marked as completed. 
 ```{r}
-my_card_list <- upwaver::list_cards("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+my_card_list <- upwaver::list_cards("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 my_card_list$count
 summary(my_card_list)
 summary(my_card_list$results[[1]])
@@ -103,7 +103,7 @@ following way. Each 'Upwave' Card has a short text at the bottom the Card descri
 The value `X`, title and status of every Card is be caught by `storypoints_and_status()` and
 given as a list. 
 ```{r}
-my_storypoints <- upwaver::storypoints_and_status("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+my_storypoints <- upwaver::storypoints_and_status("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 my_storypoints$storypoints_status
 my_storypoints$sum_storypoints
 ```

@@ -29,5 +29,5 @@ each card with a string of the form: "Aufwand: X SP" or "Aufwand: X AT". This is
 part of the 'Upwave' API but an additional functionality.
 }
 \examples{
-upwaver::storypoints_and_status("ims-fhs", 14351, "a44fa67c5df2acc9836058ffca870d7b78b017cb")
+upwaver::storypoints_and_status("4597", 14351, "807a0c3451c04602b4dbfdc0338a65f7")
 }

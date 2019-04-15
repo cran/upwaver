@@ -12,14 +12,14 @@
 
 <meta name="author" content="Adrian Stämpfli and Michael Schmid, IMS-FHS" />
 
-<meta name="date" content="2018-04-23" />
+<meta name="date" content="2019-04-15" />
 
 <title>upwaver</title>
 
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -55,7 +55,29 @@ code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
 code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -70,7 +92,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">upwaver</h1>
 <h4 class="author"><em>Adrian Stämpfli and Michael Schmid, IMS-FHS</em></h4>
-<h4 class="date"><em>2018-04-23</em></h4>
+<h4 class="date"><em>2019-04-15</em></h4>
 
 
 
@@ -112,15 +134,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="list_of_boards" class="section level4">
 <h4>List of Boards</h4>
 <p>Use <code>list_boards()</code> to get a list of all boards of your organisation. Archived boards will not be shown in this list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_board_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_boards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_board_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_boards</span>(<span class="st">&quot;4597&quot;</span>, <span class="st">&quot;807a0c3451c04602b4dbfdc0338a65f7&quot;</span>)
 my_board_list<span class="op">$</span>count</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(my_board_list)</code></pre></div>
 <pre><code>##          Length Class  Mode   
 ## count    1      -none- numeric
 ## next     0      -none- NULL   
 ## previous 0      -none- NULL   
-## results  1      -none- list</code></pre>
+## results  2      -none- list</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(my_board_list<span class="op">$</span>results[[<span class="dv">1</span>]])</code></pre></div>
 <pre><code>##                      Length Class  Mode     
 ## id                   1      -none- numeric  
@@ -134,7 +156,7 @@ my_board_list<span class="op">$</span>count</code></pre></div>
 <div id="board_details" class="section level4">
 <h4>Board details</h4>
 <p>Use <code>board_details()</code> to get detailed background Information about a specific board.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_board_details &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">board_details</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_board_details &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">board_details</span>(<span class="st">&quot;4597&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;807a0c3451c04602b4dbfdc0338a65f7&quot;</span>)
 <span class="kw">summary</span>(my_board_details)</code></pre></div>
 <pre><code>##                            Length Class  Mode     
 ## id                         1      -none- numeric  
@@ -148,12 +170,13 @@ my_board_list<span class="op">$</span>count</code></pre></div>
 ## columns                    3      -none- list     
 ## rows                       1      -none- list     
 ## colors                     3      -none- list     
-## rows_enabled               1      -none- logical</code></pre>
+## rows_enabled               1      -none- logical  
+## plugin_type                1      -none- character</code></pre>
 </div>
 <div id="list_of_cards" class="section level4">
 <h4>List of Cards</h4>
 <p>Use <code>list_cards()</code> to get detailed Information about all Cards of a specific board. This includes cards that are marked as completed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_card_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_cards</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_card_list &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">list_cards</span>(<span class="st">&quot;4597&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;807a0c3451c04602b4dbfdc0338a65f7&quot;</span>)
 my_card_list<span class="op">$</span>count</code></pre></div>
 <pre><code>## [1] 19</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(my_card_list)</code></pre></div>
@@ -175,6 +198,7 @@ my_card_list<span class="op">$</span>count</code></pre></div>
 ## due_dt           0      -none- NULL     
 ## created_dt       1      -none- character
 ## created_by_user  0      -none- NULL     
+## archived_dt      0      -none- NULL     
 ## finished_dt      0      -none- NULL     
 ## finished_by_user 0      -none- NULL     
 ## assigned         0      -none- list     
@@ -189,7 +213,7 @@ my_card_list<span class="op">$</span>count</code></pre></div>
 <p>An additional feature of upwaver is the <code>storypoints_and_status()</code> function. It’s was designed by our institue for internal reasons. Nevertheless it might be useful for your organisation as well.</p>
 <p>If working with agile methods (i.e. SCRUM, agile testing, ASD, …) you might want to work with storypoints in order to estimate time resources. Our institute works with storypoints in the following way. Each ‘Upwave’ Card has a short text at the bottom the Card description that says:<br />
 <strong>“Aufwand: X SP”</strong> or <strong>“Aufwand: X AT”</strong> as an indicator for the estimated storypoints. The value <code>X</code>, title and status of every Card is be caught by <code>storypoints_and_status()</code> and given as a list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_storypoints &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">storypoints_and_status</span>(<span class="st">&quot;ims-fhs&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;a44fa67c5df2acc9836058ffca870d7b78b017cb&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_storypoints &lt;-<span class="st"> </span>upwaver<span class="op">::</span><span class="kw">storypoints_and_status</span>(<span class="st">&quot;4597&quot;</span>, <span class="dv">14351</span>, <span class="st">&quot;807a0c3451c04602b4dbfdc0338a65f7&quot;</span>)
 my_storypoints<span class="op">$</span>storypoints_status</code></pre></div>
 <pre><code>##                                               title status storypoints
 ## 1                   US12 - Stammdaten bereitstellen      1           8
