@@ -1,3 +1,7 @@
+# upwaver 1.2.1
+
+* Minor changes in tests to reflect a minor change in the 'Upwave' API endpoint. The API of the package did not change.
+
 # upwaver 1.2.0
 
 * Minor changes to reflect new 'Upwave' API endpoint. The API of the package did not change.

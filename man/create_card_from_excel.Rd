@@ -4,8 +4,8 @@
 \alias{create_card_from_excel}
 \title{Create a new card on a specified 'Upwave' board}
 \usage{
-create_card_from_excel(excel_file, sheet, line_number, organisation, board_id,
-  board_name, token)
+create_card_from_excel(excel_file, sheet, line_number, organisation,
+  board_id, board_name, token)
 }
 \arguments{
 \item{excel_file}{A character. The path to an excel-file providing informations for user-stories;

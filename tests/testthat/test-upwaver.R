@@ -26,12 +26,12 @@ test_that("list_boards() works", {
 
   list_boards <- list_boards("99", "807a0c3451c04602b4dbfdc0338a65f7")
   expect_that(list_boards, is_a("list"))
-  expect_that(length(list_boards), equals(1))
+  expect_that(length(list_boards), equals(2))
   expect_that(list_boards$detail, equals("Not found."))
 
   board_details <- board_details("99", 1234, "807a0c3451c04602b4dbfdc0338a65f7")
   expect_that(board_details, is_a("list"))
-  expect_that(length(board_details), equals(1))
+  expect_that(length(board_details), equals(2))
   expect_that(board_details$detail, equals("Not found."))
 })
 
